@@ -6,6 +6,7 @@ Pasos para ejecutar el proyecto:
 3.Correr el devServer ```npm run dev```
 4.Abrir el proyecto en: ```localhost:3000```
 5.Prueba de actualizacion readme desde panel visual
+6.xd
 
 ##Producción
 
