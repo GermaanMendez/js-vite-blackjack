@@ -1,0 +1,59 @@
+html,body{
+  margin: 0px;
+  background-color: black;
+  color: white;
+  /* background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); */
+}
+.estilosModoClaro{
+  margin: 0px;
+  background-color: white;
+  color: black;
+}
+.titulo{
+  font-size: 30px; /* Tamaño de la fuente de 30 píxeles */
+  margin: 0 auto; /* Margen superior e inferior automático y margen izquierdo y derecho cero */
+  padding: 10px; /* Espacio de relleno interno de 10 píxeles */
+  color: yellow; /* Color del texto amarillo */
+  text-align: center; /* Alineación del texto al centro */
+  align-items: center; /* Centra verticalmente los elementos (en un contenedor flex) */
+  background-color: black; /* Color de fondo negro */
+  border-radius: 100px; /* Radio de borde de 100 píxeles para crear una forma redonda */
+  border: 10px solid green; /* Borde sólido de 10 píxeles de ancho y color verde */
+  width: 20%; /* Ancho del elemento al 20% del ancho de su contenedor */
+}
+.tituloModoClaro{
+  background-color: greenyellow;
+  color:black ;
+}
+
+
+.carta {
+  position: relative; /* Establece la posición relativa. Al utilizar las propiedades top, right,
+  bottom o left, puedes desplazar el elemento en relación con su posición original. 
+  Ej:Si estableces top: 10px, el elemento se desplazará hacia abajo desde su posición original en 10 píxeles.
+  posicion original seria la posicion que tiene el elemento en la pagina antes de aplicarle cualquier estilo */
+  width: 150px; /* Ancho del elemento de 150 píxeles */
+  left: 100px; /* Desplazamiento horizontal de 100 píxeles desde su posición original */
+  margin-left: -75px; /* Desplazamiento hacia la izquierda de 75 píxeles del margen izquierdo */
+}
+
+#computadora-cartas, #jugador-cartas{
+  height: 180px;
+}
+
+
+.PruebaCrearDesdeJs{
+  margin: 0 auto;
+  background-color: red;
+  color: black;
+  text-align: center;
+  align-items: center;
+  width: 30%;
+  border-radius: 10px;
+  border: 5px  solid slateblue;
+}
+.PruebaCrearDesdeJsButton{
+  background-color: yellow;
+  color: black;
+ 
+}
