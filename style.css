@@ -18,7 +18,7 @@
   50% { /*Punto medio de la animacion*/
     background-position: 100% 50%;
   }
-  100% { /*Punto final de la animacion*/
+  100% { /*Punto final de la animacionn*/
     background-position: 0% 50%;
   }
 }

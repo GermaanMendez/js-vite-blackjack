@@ -4,33 +4,39 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/js-vite-blackjack/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <!-- Boostrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
-    <title>BlackJack</title>
-    <script type="module" crossorigin src="/js-vite-blackjack/assets/index-1a05fe6f.js"></script>
-    <link rel="stylesheet" href="/js-vite-blackjack/assets/index-af81d6d2.css">
+        <title>BlackJack</title>
+    
+    <script type="module" crossorigin src="/js-vite-blackjack/assets/index-8ee079d1.js"></script>
+    <link rel="stylesheet" href="/js-vite-blackjack/assets/index-c0aa2d4d.css">
   </head>
   <body>
-    <header class="titulo">
-      BlackJack
-  </header>
-  <h2 class="mensajeInicioJuego"></h2>
+      <div class="modoAnimado" >
+          <header class="titulo">
+            <h1 class="animate__animated animate__bounce">BlackJack</h1>
+          </header>
+  
+          
   <div class="row mt-2">
       <div class="col text-center" id="divBotones">
-          <button class="btn btn-success custom-btn btn-rounded" id="btnNuevoJuego">Nuevo Juego</button>
-          <button class="btn btn-primary custom-btn btn-rounded" id="btnPedirCarta">Pedir Carta</button>
-          <button class="btn btn-danger custom-btn btn-rounded"  id="btnDetenerJuego">Detener</button>
-          <button class="btn btn-secondary custom-btn btn-rounded" id="btnPruebaJs">Prueba crear html desde js</button>
-          <button class="btn btn-light custom-btn btn-rounded" id="btnModoClaro">Modo Claro</button>
-          <button class="btn btn-dark custom-btn btn-rounded" id="btnModoOscuro">Modo Oscuro</button>
+          <button class="btn btn-success custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnNuevoJuego">Nuevo Juego</button>
+          <button class="btn btn-primary custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnPedirCarta">Pedir Carta</button>
+          <button class="btn btn-danger custom-btn btn-rounded animate__animated animate__bounceInUp"  id="btnDetenerJuego">Detener</button>
+          <!-- <button class="btn btn-secondary custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnPruebaJs">Prueba crear html desde js</button> -->
+          <button class="btn btn-light custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoClaro">Modo Claro</button>
+          <button class="btn btn-dark custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoOscuro">Modo Oscuro</button>
+          <button class="btn btn-outline-warning custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoAnimado">Modo Animado</button>
       </div>
   </div>
 
   <div class="row container">
       <div class="col">
-          <h1>Jugador 1 - <small>0</small></h1>
+          <h1 class="animate__animated animate__bounceInRight">Jugador 1 - <small>0</small></h1>
           <div id="jugador-cartas" class="divCartas">
               <!-- <img class="carta" src="assets//cartas/10C.png">-->
               <!-- Acá se generaran las etiquetas img de manera dinamica desde el JS -->
@@ -42,7 +48,7 @@
 
   <div class="row container mt-5">
       <div class="col">
-          <h1>Computadora - <small>0</small></h1>
+          <h1 class="animate__animated animate__bounceInRight">Computadora - <small>0</small></h1>
           <div id="computadora-cartas" class="divCartas">
               <!-- <img class="carta" src="assets//cartas/10C.png">-->
               <!-- Acá se generaran las etiquetas img de manera dinamica desde el JS -->
@@ -56,8 +62,7 @@
 
 
 
-
-
+</div>
 
     <div id="app"></div>
     
