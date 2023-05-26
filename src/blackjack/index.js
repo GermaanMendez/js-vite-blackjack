@@ -1,15 +1,11 @@
-
-import _ from 'underscore';
+import _ from 'underscore'; //importacion de elementos necesarios
 import { crearDeck, pedirCarta, determinarGanador,turnoComputadora, acumularPuntosJugadores,crearCarta} from './CasosDeUso/index'
 
 
-//esta funcion anonima autoEjecutable se ejecuta al inicio, al ser anonima(sin nombre) no es posible acceder a dicha funcion desde la consola
-//por lo tanto no puedo acceder ni a la funcion ni a nignuno de los elementos que esten dentro de dicha funcion
-//esto lo hago para que mi codigo no sea vulnerable y manipulable desde la consola. Por eso lo pongo al inicio embebiendo todo mi codigo y es lo primero que se ejcuta de manera automicatica
-//el 'use strict' es algo que debo poner siempre ya que declara que el codigo se ejecuta de modo estricto lo cual me ayuda a encontrar erroes 
+//funcion anonima autoEjecutable se ejecuta al inicio y encierra todo mi codigo.al ser anonima no es posible acceder a dicha funcion desde la consola
+//por lo tanto no puedo acceder ni a la funcion ni a nignuno de los elementos que esten dentro de dicha funcion esto lo hago para que mi codigo no sea vulnerable y manipulable desde la consola.
 const miModulo=(() => {
-  'use strict'
-
+  'use strict' //me ayuda a detectar errores 
 //carga la ventana
     window.addEventListener('load', inicio);
 
@@ -17,57 +13,58 @@ function inicio() {  //obtengo desde html botones que ejecutan funciones
   const btnPedirCarta = document.querySelector('#btnPedirCarta'),
         btnNuevoJuego = document.querySelector('#btnNuevoJuego'),
         btnDetenerJuego = document.querySelector('#btnDetenerJuego'),
-        btnPruebaJs = document.querySelector('#btnPruebaJs'),
         btnModoOscuro = document.querySelector('#btnModoOscuro'),
-        btnModoClaro = document.querySelector('#btnModoClaro');
-
+        btnModoClaro = document.querySelector('#btnModoClaro'),
+    btnModoAnimado = document.querySelector('#btnModoAnimado');
+  
         //eventos botones
         btnDetenerJuego.addEventListener('click',detenerJuego)
         btnPedirCarta.addEventListener('click', comenzarJuego)
         btnNuevoJuego.addEventListener('click', nuevoJuego)
-        btnPruebaJs.addEventListener('click', pruebaJs)
         btnModoOscuro.addEventListener('click', modoOscuro)
         btnModoClaro.addEventListener('click', modoClaro)
+        btnModoAnimado.addEventListener('click',modoAnimado)
     }
-    btnPedirCarta.style.display = 'none';
-    btnDetenerJuego.style.display = 'none';
+
 //constantes y let globales
 let       deck   = []; // baraja de cartas
 const    tipos   = ['C', 'D', 'H', 'S'], //tipos de cartas
     especiales   = ['A', 'J', 'Q', 'K']; //cartas especiales
 
-let puntosJugadores = [];
+  let puntosJugadores = []; //Este array sera donde guardare los puntos de todos los jugadores, cada posicion en este array representa los puntos 
+                            //acumulados para un jugador.EJ puntosJugadores[0] en esta posocion se guarda el acumulado para el jugador 0
+                             //y asi sucesivamente como tantos jughadores tenga(2)
 
-deck=crearDeck( tipos,especiales);   
-const divCartasJugadores = document.querySelectorAll('.divCartas'),
-              puntosHTML = document.querySelectorAll('small');//smalls que estan en el HTML donde se muestran los puntos
+deck=crearDeck( tipos,especiales);   //creacion del deck mediante funcion importada
+const divCartasJugadores = document.querySelectorAll('.divCartas'), //Este array guarda todos los divCartas que encuentre en el html ya que para jugador quiero poder mostrarle las cartas que eligio. Por lo tanto necesito obtener todos los div de jugadores para luego sobreescribirlos desde aca en js
+              puntosHTML = document.querySelectorAll('small');//smalls que estan en el HTML donde se muestran los puntos, los selecciono a todos en un array para poder sobreescribirlos segun el jugador que tenga el turno y deben acumularse sus puntos
 
-
-
-    
+/**
+ * Esta funcion se encarga de iniciar el juego, se ejecuta al click del boton nuevoJuego, crea tantos divs y posiciones en el array de puntos como puntos reciba
+ * @param {number} numJugadores 
+ */
 const inicializarJuego = (numJugadores = 2) => {
     puntosJugadores = [];
-    deck = crearDeck(tipos,especiales);//se cera la baraja usando la funcion
+    //Crea tantas posiciones en el array de puntos como jugadores reciba por parametro ya que si tengo 2 jugadores quiero tener 2 almacenadores uno para cada jugador
     for (let i = 0; i < numJugadores; i++){
         puntosJugadores.push(0);
     }
-    btnPedirCarta.style.display = 'inline-block';
-    btnDetenerJuego.style.display = 'inline-block';
-    btnPedirCarta.disabled = false;
-    btnDetenerJuego.disabled = false;
-    for (let i=0; i< puntosJugadores.length; i++){
+    btnPedirCarta.style.display = 'inline-block'; btnDetenerJuego.style.display = 'inline-block'; btnPedirCarta.disabled = false; btnDetenerJuego.disabled = false;
+  //crea de forma dinamica los divs que almacenaran las cartas de los jugadores, creara tantos divs como jugadores hayan 
+  for (let i = 0; i < puntosJugadores.length; i++){
         divCartasJugadores[i].innerHTML = "";
         puntosHTML[i].innerHTML = 0;
     }
-}
-//funcion que da comienzo al juego, se ejecuta con el boton pedir carta
+  }
+  
+//funcion que da comienzo a la partida, se ejecuta con el boton pedir carta
 const comenzarJuego = () => {
-  let carta = pedirCarta(deck) // se obtiene la carta pedida por el juador
-  const puntosJugador = acumularPuntosJugadores(puntosJugadores,puntosHTML,carta,0)//paso 0 xq es la posicion del jugador
-  crearCarta(divCartasJugadores,carta,0)
+  let carta = pedirCarta(deck) // se obtiene la carta pedida por el juador mediante funcion importada
+  const puntosJugador = acumularPuntosJugadores(puntosJugadores,puntosHTML,carta,0)//Paso array de puntos, array de small, carta y turno. De esta forma la funcion puede obtener el valor de la carta y sumarlo en el array de puntos y sobreEscribir el small en la posicion 0 ya que corresponde a un jugador real
+  crearCarta(divCartasJugadores,carta,0)//Paso array de divs, carta y turno.
   if (puntosJugador >= 21) {//El jugador sigue pidiendo cartas y cuando su puntaje sea >=21 ejecuto la funcion pasandole el puntaje
       btnPedirCarta.disabled = true;
-      btnDetenerJuego.disabled = true;
+      btnDetenerJuego.disabled = true;  //paso array div, array de puntos, array de smalls, puntos minimos para que gane la PC y deck para que la pc pueda obtener sus cartas
       turnoComputadora(divCartasJugadores,puntosJugadores,puntosHTML,puntosJugador,deck);
   }     
 }
@@ -93,47 +90,34 @@ const nuevoJuego = () => { //vuelvo a habilitar botones, reseteo puntos, borro i
 
 
 
-//esto es la prueba del boton crear html desde js
-
-//si quisiera que no se agregue en caso de ya existir saco los elementos creados
-let h3 = document.createElement('h3'); //al sacarlos los dejo como variables globales
-const pruebaJs = () => {
-  document.querySelector('.mensajeInicioJuego').innerHTML = ''
- // let h3 = document.createElement('h3');
-  if(h3.textContent==''){
-  h3.className = 'PruebaCrearDesdeJs'
-  h3.innerHTML = 'h3 creado desde js'
-  let input = document.createElement('input');
-  input.className = 'PruebaCrearDesdeJs'
-  input.placeholder = 'Escriba aquí'
-  let button = document.createElement('button');
-  button.textContent = 'Subir'
-  button.className='PruebaCrearDesdeJsButton'
-  let divBotones = document.querySelector('#divBotones');
-  divBotones.append(h3, input, button)
-  }
-}
-btnModoOscuro.style.display = 'none'
-const modoClaro = () => {
-    let body = document.querySelector('body')
-    let html = document.querySelector('html')
-    let tiulo = document.querySelector('header')
-    tiulo.classList.add('tituloModoClaro')
-    body.className = 'estilosModoClaro'
-    html.className = 'estilosModoClaro'
+  const modoClaro = () => {
+    let divModoVista = document.querySelector('.modoAnimado')
+    divModoVista.classList.remove('estilosModoOscuro');
+    divModoVista.classList.remove('estilosModoAnimado');
+    divModoVista.classList.add('estilosModoClaro');
     btnModoClaro.style.display = 'none'
     btnModoOscuro.style.display = 'inline-block'
+    btnModoAnimado.style.display = 'inline-block'
 }
-const modoOscuro = () => {
-    let body = document.querySelector('body')
-    let html = document.querySelector('html')
-    let tiulo = document.querySelector('header')
-    tiulo.className='titulo'
-    body.className = ''
-    html.className = ''
+  const modoOscuro = () => {
+    let divModoVista = document.querySelector('.modoAnimado')
+    divModoVista.classList.remove('estilosModoAnimado');
+    divModoVista.classList.remove('estilosModoClaro');
+    divModoVista.classList.add('estilosModoOscuro');
+    btnModoClaro.style.display = 'inline-block'
     btnModoOscuro.style.display = 'none'
-    btnModoClaro.style.display='inline-block'
-}
+    btnModoAnimado.style.display = 'inline-block'
+  }
+  
+  const modoAnimado = ()=>{
+    let divModoVista = document.querySelector('.modoAnimado')
+    divModoVista.classList.remove('estilosModoOscuro');
+    divModoVista.classList.remove('estilosModoClaro');
+    divModoVista.classList.add('modoAnimado');
+    btnModoAnimado.style.display = 'none'
+    btnModoClaro.style.display = 'inline-block'
+    btnModoOscuro.style.display = 'inline-block'
+  }
 
 
 //este encapsulamiento siempre tiene un return donde retornare, hare publico lo que sea necesario

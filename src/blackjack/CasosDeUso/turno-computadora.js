@@ -5,9 +5,13 @@ import determinarGanador from "./determinar-Ganador";
 
 
 /**
- * 
- * @param {Number} puntosMinimos que necesita la computadora para ganar 
- * @param {Array<String>} deck 
+ * Funcion que se encarga del tuno de la computadora. obtiene carta para la misma, muestra sus imgs cartas, acumula y muestra sus puntos en el html
+ * @param {Array}divCartasJugadores Array de divs donde creare y mostrare las cartas para la computadora en este caso .
+ * @param {Array<number>}puntosJugadores Array de puntos para poder acumular los puntos en este caso de la computadora que se guardan en la ultima posicion de este array
+ * @param {Array}puntosHTML Array de smalls donde voy a sumar los puntos en este caso de la computadora que tambien estan en la ultima posicion de los small 
+ * @param {number}puntosMinimos  que necesita superar la computadora para ganar, puntos minimos es igual a los puntos actuales del jugador al momento de que la pc tenga su turno 
+ * @param {Array} deck de cartas. Es necesario para que la pc pueda obtener su carta 
+ * return Retorna el ganador  ya que llama a la funcion determinarGanador pasandole el array de puntos final donde estan los acumulados finales para los 2 jugadores
  */
 
 //turno de la computadora. Recibe un puntaje que será el del jugador

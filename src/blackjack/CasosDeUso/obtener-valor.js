@@ -1,6 +1,6 @@
 
 /**
- * Obtener el valor de la carta
+ * Obtener el valor de la carta en base a la carta recibida
  * @param {string} carta 
  * @returns retorna el valor de la carta que recibe
  */

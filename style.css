@@ -1,14 +1,55 @@
-html,body{
+/* Estado inicial de los botones */
+#btnModoAnimado, #btnPedirCarta,#btnDetenerJuego,#btnModoOscuro {
+  display: none;
+}
+/* Estilos para el modo animado */
+.modoAnimado {
+  width: 100%;
+  height: 100vh;
+  color: peru;
+  background: linear-gradient(45deg, #00aaff, #ff0000);/*Establece un fondo con un degradado lineal inclinado a 45 grados. El degradado va desde el color #00aaff (azul claro) hasta el color #ff0000 (rojo).*/
+  background-size: 200% 200%;/* Establece el tamaño del fondo del elemento al 200% de su tamaño original tanto en el eje X como en el eje Y. Esto hace que el degradado se repita dos veces en cada dirección.*/
+  animation: backgroundAnimation 3s infinite;
+}
+@keyframes backgroundAnimation { /*KeyFrames crea una funcion animada que es usada arriba por modoAnimado*/
+  0% { /*Punto de partida de la animacion*/
+    background-position: 0% 50%;
+  }
+  50% { /*Punto medio de la animacion*/
+    background-position: 100% 50%;
+  }
+  100% { /*Punto final de la animacion*/
+    background-position: 0% 50%;
+  }
+}
+
+/* --------------ESTILOS MODO CLARO----------------- */
+.estilosModoClaro{
+  animation-play-state: paused;  /*Pausa la animacion*/
+  animation: none;    /*Elimina la animacion*/
+  background-image: none;   /*Quita el color de la animacion*/
   margin: 0px;
+  color: black;
+  background-color: wheat;
+}
+.estilosModoClaro header{
+  background-color: greenyellow;
+  color:black ;
+}
+/* --------------ESTILOS MODO OSCURO----------------- */
+.estilosModoOscuro{
+  animation-play-state: paused;
+  animation: none;
+  background-image: none;
   background-color: black;
   color: white;
   /* background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); */
 }
-.estilosModoClaro{
-  margin: 0px;
-  background-color: white;
-  color: black;
+.estilosModoOscuro header{
+  background-color: black;
+  color:yellow ;
 }
+
 .titulo{
   font-size: 30px; /* Tamaño de la fuente de 30 píxeles */
   margin: 0 auto; /* Margen superior e inferior automático y margen izquierdo y derecho cero */
@@ -21,10 +62,7 @@ html,body{
   border: 10px solid green; /* Borde sólido de 10 píxeles de ancho y color verde */
   width: 20%; /* Ancho del elemento al 20% del ancho de su contenedor */
 }
-.tituloModoClaro{
-  background-color: greenyellow;
-  color:black ;
-}
+
 
 
 .carta {
@@ -42,18 +80,47 @@ html,body{
 }
 
 
-.PruebaCrearDesdeJs{
-  margin: 0 auto;
-  background-color: red;
-  color: black;
-  text-align: center;
-  align-items: center;
-  width: 30%;
-  border-radius: 10px;
-  border: 5px  solid slateblue;
+
+/* Estilos para pantallas de hasta 768px (dispositivos móviles) */
+@media (max-width: 768px) {
+  .titulo {
+    width: 70%;
+  }
+
+  .carta {
+    width: 100px;
+    left: 50px;
+    margin-left: -50px;
+  }
+
+  #computadora-cartas,
+  #jugador-cartas {
+    height: 120px;
+  }
+
+  .PruebaCrearDesdeJs {
+    width: 80%;
+  }
 }
-.PruebaCrearDesdeJsButton{
-  background-color: yellow;
-  color: black;
- 
+
+/* Estilos para pantallas de más de 768px (laptops) */
+@media (min-width: 769px) {
+  .titulo {
+    width: 20%;
+  }
+
+  .carta {
+    width: 150px;
+    left: 100px;
+    margin-left: -75px;
+  }
+
+  #computadora-cartas,
+  #jugador-cartas {
+    height: 180px;
+  }
+
+  .PruebaCrearDesdeJs {
+    width: 30%;
+  }
 }
