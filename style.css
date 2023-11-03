@@ -1,46 +1,41 @@
 /* Estado inicial de los botones */
-#btnModoAnimado, #btnPedirCarta,#btnDetenerJuego,#btnModoOscuro {
+ #btnPedirCarta,#btnDetenerJuego,#btnModoOscuro {
   display: none;
 }
-/* Estilos para el modo animado */
-.modoAnimado {
-  width: 100%;
-  height: 100vh;
-  color: peru;
-  background: linear-gradient(45deg, #00aaff, #ff0000);/*Establece un fondo con un degradado lineal inclinado a 45 grados. El degradado va desde el color #00aaff (azul claro) hasta el color #ff0000 (rojo).*/
-  background-size: 200% 200%;/* Establece el tamaño del fondo del elemento al 200% de su tamaño original tanto en el eje X como en el eje Y. Esto hace que el degradado se repita dos veces en cada dirección.*/
-  animation: backgroundAnimation 3s infinite;
+html{
+   height: 100%;
 }
-@keyframes backgroundAnimation { /*KeyFrames crea una funcion animada que es usada arriba por modoAnimado*/
-  0% { /*Punto de partida de la animacion*/
-    background-position: 0% 50%;
-  }
-  50% { /*Punto medio de la animacion*/
-    background-position: 100% 50%;
-  }
-  100% { /*Punto final de la animacionn*/
-    background-position: 0% 50%;
-  }
+body{
+  height: 100%;
 }
 
+.gameContainer {
+  height: 100%;
+  overflow-x: hidden;
+}
 /* --------------ESTILOS MODO CLARO----------------- */
 .estilosModoClaro{
-  animation-play-state: paused;  /*Pausa la animacion*/
-  animation: none;    /*Elimina la animacion*/
-  background-image: none;   /*Quita el color de la animacion*/
-  margin: 0px;
-  color: black;
   background-color: wheat;
 }
 .estilosModoClaro header{
-  background-color: greenyellow;
   color:black ;
+}
+.estilosModoClaro .titulo{
+  border-top: 10px solid black; 
+}
+.estilosModoClaro #btnNuevoJuego,#btnDetenerJuego{
+  background-color: yellow;
+  color: black;
+}
+.estilosModoClaro #btnModoOscuro,#btnPedirCarta{
+  background-color: black;
+  color: white;
+}
+.estilosModoClaro .playersTitle{
+  color: black;
 }
 /* --------------ESTILOS MODO OSCURO----------------- */
 .estilosModoOscuro{
-  animation-play-state: paused;
-  animation: none;
-  background-image: none;
   background-color: black;
   color: white;
   /* background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet); */
@@ -49,20 +44,28 @@
   background-color: black;
   color:yellow ;
 }
-
+.estilosModoOscuro #btnNuevoJuego,#btnDetenerJuego{
+  background-color: yellow;
+  color: black;
+}
+.estilosModoOscuro #btnModoClaro,#btnPedirCarta{
+  background-color: black;
+  color: white;
+}
+.estilosModoOscuro .playersTitle{
+  color: yellow;
+}
+/* <header class="titulo">
+<h1 class="animate__animated animate__bounce title">BlackJack</h1>
+</header> */
 .titulo{
-  font-size: 30px; /* Tamaño de la fuente de 30 píxeles */
-  margin: 0 auto; /* Margen superior e inferior automático y margen izquierdo y derecho cero */
-  padding: 10px; /* Espacio de relleno interno de 10 píxeles */
+  margin: 0 auto; 
+  padding: 15px; /* Espacio de relleno interno de 10 píxeles */
   color: yellow; /* Color del texto amarillo */
   text-align: center; /* Alineación del texto al centro */
-  align-items: center; /* Centra verticalmente los elementos (en un contenedor flex) */
-  background-color: black; /* Color de fondo negro */
   border-radius: 100px; /* Radio de borde de 100 píxeles para crear una forma redonda */
-  border: 10px solid green; /* Borde sólido de 10 píxeles de ancho y color verde */
-  width: 20%; /* Ancho del elemento al 20% del ancho de su contenedor */
+  border-top: 10px solid yellow; 
 }
-
 
 
 .carta {
@@ -75,6 +78,9 @@
   margin-left: -75px; /* Desplazamiento hacia la izquierda de 75 píxeles del margen izquierdo */
 }
 
+.row{
+  margin-top: 10px;
+}
 #computadora-cartas, #jugador-cartas{
   height: 180px;
 }

@@ -11,11 +11,10 @@ const miModulo=(() => {
 
 function inicio() {  //obtengo desde html botones que ejecutan funciones
   const btnPedirCarta = document.querySelector('#btnPedirCarta'),
-        btnNuevoJuego = document.querySelector('#btnNuevoJuego'),
-        btnDetenerJuego = document.querySelector('#btnDetenerJuego'),
-        btnModoOscuro = document.querySelector('#btnModoOscuro'),
-        btnModoClaro = document.querySelector('#btnModoClaro'),
-    btnModoAnimado = document.querySelector('#btnModoAnimado');
+      btnNuevoJuego = document.querySelector('#btnNuevoJuego'),
+      btnDetenerJuego = document.querySelector('#btnDetenerJuego'),
+      btnModoOscuro = document.querySelector('#btnModoOscuro'),
+      btnModoClaro = document.querySelector('#btnModoClaro');
   
         //eventos botones
         btnDetenerJuego.addEventListener('click',detenerJuego)
@@ -23,7 +22,6 @@ function inicio() {  //obtengo desde html botones que ejecutan funciones
         btnNuevoJuego.addEventListener('click', nuevoJuego)
         btnModoOscuro.addEventListener('click', modoOscuro)
         btnModoClaro.addEventListener('click', modoClaro)
-        btnModoAnimado.addEventListener('click',modoAnimado)
     }
 
 //constantes y let globales
@@ -91,32 +89,18 @@ const nuevoJuego = () => { //vuelvo a habilitar botones, reseteo puntos, borro i
 
 
   const modoClaro = () => {
-    let divModoVista = document.querySelector('.modoAnimado')
-    divModoVista.classList.remove('estilosModoOscuro');
-    divModoVista.classList.remove('estilosModoAnimado');
-    divModoVista.classList.add('estilosModoClaro');
+    let divJuego = document.querySelector('.gameContainer')
+    divJuego.classList.remove('estilosModoOscuro');
+    divJuego.classList.add('estilosModoClaro');
     btnModoClaro.style.display = 'none'
     btnModoOscuro.style.display = 'inline-block'
-    btnModoAnimado.style.display = 'inline-block'
 }
   const modoOscuro = () => {
-    let divModoVista = document.querySelector('.modoAnimado')
-    divModoVista.classList.remove('estilosModoAnimado');
-    divModoVista.classList.remove('estilosModoClaro');
-    divModoVista.classList.add('estilosModoOscuro');
+    let divJuego = document.querySelector('.gameContainer')
+    divJuego.classList.remove('estilosModoClaro');
+    divJuego.classList.add('estilosModoOscuro');
     btnModoClaro.style.display = 'inline-block'
     btnModoOscuro.style.display = 'none'
-    btnModoAnimado.style.display = 'inline-block'
-  }
-  
-  const modoAnimado = ()=>{
-    let divModoVista = document.querySelector('.modoAnimado')
-    divModoVista.classList.remove('estilosModoOscuro');
-    divModoVista.classList.remove('estilosModoClaro');
-    divModoVista.classList.add('modoAnimado');
-    btnModoAnimado.style.display = 'none'
-    btnModoClaro.style.display = 'inline-block'
-    btnModoOscuro.style.display = 'inline-block'
   }
 
 

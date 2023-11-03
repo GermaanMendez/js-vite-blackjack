@@ -14,27 +14,28 @@
     
   </head>
   <body>
-      <div class="modoAnimado" >
+      <div class="gameContainer estilosModoOscuro" >
+
           <header class="titulo">
-            <h1 class="animate__animated animate__bounce">BlackJack</h1>
+            <h1 class="animate__animated animate__bounce title">BlackJack</h1>
           </header>
   
           
   <div class="row mt-2">
       <div class="col text-center" id="divBotones">
-          <button class="btn btn-success custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnNuevoJuego">Nuevo Juego</button>
-          <button class="btn btn-primary custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnPedirCarta">Pedir Carta</button>
-          <button class="btn btn-danger custom-btn btn-rounded animate__animated animate__bounceInUp"  id="btnDetenerJuego">Detener</button>
+          <button class="btn  custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnNuevoJuego">New Game</button>
+          <button class="btn btn-light custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnPedirCarta">New Card</button>
+          <button class="btn  custom-btn btn-rounded animate__animated animate__bounceInUp"  id="btnDetenerJuego">Stop</button>
           <!-- <button class="btn btn-secondary custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnPruebaJs">Prueba crear html desde js</button> -->
-          <button class="btn btn-light custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoClaro">Modo Claro</button>
-          <button class="btn btn-dark custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoOscuro">Modo Oscuro</button>
-          <button class="btn btn-outline-warning custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoAnimado">Modo Animado</button>
+          <button class="btn btn-light custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoClaro">Clear Mode</button>
+          <button class="btn btn-dark custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoOscuro">Dark Mode</button>
+          <!-- <button class="btn btn-outline-warning custom-btn btn-rounded animate__animated animate__bounceInUp" id="btnModoAnimado">Modo Animado</button> -->
       </div>
   </div>
 
   <div class="row container">
       <div class="col">
-          <h1 class="animate__animated animate__bounceInRight">Jugador 1 - <small>0</small></h1>
+          <h1 class="animate__animated animate__bounceInRight playersTitle">Player 1 - <small>0</small></h1>
           <div id="jugador-cartas" class="divCartas">
               <!-- <img class="carta" src="assets//cartas/10C.png">-->
               <!-- Acá se generaran las etiquetas img de manera dinamica desde el JS -->
@@ -46,7 +47,7 @@
 
   <div class="row container mt-5">
       <div class="col">
-          <h1 class="animate__animated animate__bounceInRight">Computadora - <small>0</small></h1>
+          <h1 class="animate__animated animate__bounceInRight playersTitle" >Computer - <small>0</small></h1>
           <div id="computadora-cartas" class="divCartas">
               <!-- <img class="carta" src="assets//cartas/10C.png">-->
               <!-- Acá se generaran las etiquetas img de manera dinamica desde el JS -->
